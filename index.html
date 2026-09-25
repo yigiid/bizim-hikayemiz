@@ -227,6 +227,110 @@
         transform: rotate(-8deg);
       }
 
+      /* YENİ EKLENEN TİMELİNE STİLLERİ */
+      .timeline-card {
+        margin-top: 26px;
+        padding: clamp(32px, 6vw, 58px);
+      }
+
+      .timeline-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .timeline-header h2 {
+        margin: 8px 0 0;
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        line-height: 1.1;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(199, 76, 112, 0.2), var(--rose), rgba(199, 76, 112, 0.2));
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 36px;
+        width: 50%;
+        padding-right: 36px;
+      }
+
+      .timeline-item:nth-child(even) {
+        margin-left: 50%;
+        padding-right: 0;
+        padding-left: 36px;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--cream);
+        border: 3px solid var(--rose);
+        box-shadow: 0 0 0 4px rgba(199, 76, 112, 0.15);
+        z-index: 2;
+      }
+
+      .timeline-item:nth-child(even) .timeline-dot {
+        right: auto;
+        left: -10px;
+      }
+
+      .timeline-box {
+        padding: 22px;
+        border: 1px solid rgba(182, 92, 118, 0.15);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 30px rgba(119, 52, 76, 0.05);
+        transition: transform 0.2s ease;
+      }
+
+      .timeline-box:hover {
+        transform: translateY(-3px);
+      }
+
+      .timeline-date {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        background: var(--blush);
+        color: var(--rose-deep);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+      }
+
+      .timeline-title {
+        margin: 0 0 8px;
+        font-size: 1.25rem;
+        color: var(--ink);
+      }
+
+      .timeline-desc {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
       .song-card {
         display: grid;
         grid-template-columns: 1.05fr 1fr;
@@ -346,6 +450,12 @@
         .song-card { gap: 18px; }
         .vinyl-wrap { min-height: 260px; grid-row: 1; }
         .quote-card { grid-template-columns: 1fr auto; }
+
+        /* Timeline mobil uyumu */
+        .timeline::before { left: 20px; }
+        .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
+        .timeline-item:nth-child(even) { margin-left: 0; padding-left: 50px; }
+        .timeline-dot { left: 10px !important; right: auto !important; }
       }
 
       @media (max-width: 440px) {
@@ -398,6 +508,42 @@
             <p class="quote-label" id="quote-title">Her gün, <span>sana dair yeni bir sebep.</span></p>
           </div>
           <div class="quote-flower" aria-hidden="true">✿</div>
+        </section>
+
+        <!-- YENİ EKLENEN BÖLÜM: BİZİM HİKAYEMİZ (TIMELINE) -->
+        <section class="card timeline-card" aria-labelledby="timeline-title">
+          <div class="timeline-header">
+            <p class="eyebrow">Adım Adım</p>
+            <h2 id="timeline-title">Unutulmaz <em>Anlarımız</em></h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-box">
+                <span class="timeline-date">9 Mayıs 2026</span>
+                <h3 class="timeline-title">İlk Karşılaşma ✦</h3>
+                <p class="timeline-desc">Yollarımızın ilk kez kesiştiği, hayatımın en özel hikâyesinin sessizce başladığı o unutulmaz gün.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-box">
+                <span class="timeline-date">20 Mayıs 2026</span>
+                <h3 class="timeline-title">Biz Olduğumuz Gün ♥</h3>
+                <p class="timeline-desc">Ellerimizin birleştiği, "biz" olarak ilk adımı attığımız ve takvimlerin bizim için anlam kazandığı gün.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-box">
+                <span class="timeline-date">Bugün & Daima</span>
+                <h3 class="timeline-title">Birlikte Her An ❀</h3>
+                <p class="timeline-desc">Her batan güneşle biraz daha çoğalan, büyüyen ve yarınlara heyecanla uzanan sevgimizle devam ediyoruz.</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section class="card song-card" aria-labelledby="song-title">
